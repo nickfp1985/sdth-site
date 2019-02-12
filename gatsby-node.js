@@ -4,10 +4,11 @@ const path = require('path')
 const { GC_CLIENT_EMAIL, GC_PRIVATE_KEY, GC_ID } = process.env
 
 function authenticate() {
+  const privateKey = GC_PRIVATE_KEY.replace(/\\n/g, '\n');
   const jwtClient = new google.auth.JWT(
     process.env.GC_CLIENT_EMAIL,
     null,
-    process.env.GC_PRIVATE_KEY,
+    private.key,
     ['https://www.googleapis.com/auth/calendar']
   )
 
