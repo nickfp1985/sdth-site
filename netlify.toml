@@ -1,4 +1,5 @@
 
 
 [context.branch-deploy]
+  command = "npm run build"
   environment = { NODE_VERSION = "11.5.0" }
