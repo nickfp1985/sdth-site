@@ -104,7 +104,7 @@ exports.createPages = ({ graphql, actions }) => {
         }
 
         results.data.allCalendarEvent.edges.map(({ node }) => {
-          console.log(node);
+          // console.log(node);
           createPage({
             path: `/event/${node.id}`,
             component: template,

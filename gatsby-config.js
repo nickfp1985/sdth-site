@@ -1,9 +1,9 @@
-const path = '.env' + (process.env.NODE_ENV === 'development' ? '.dev' : '')
+const path = '.env' + (process.env.NODE_ENV === 'development' ? '.dev' : '.dev')
 
 console.log(process.env.NODE_ENV)
-if (process.env.NODE_ENV !== 'production') {
+// if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config({ path }) // only run this in prod if we're doing the FTP deployement, not for now/netlify deployment.
-}
+// }
 
 module.exports = {
   siteMetadata: {

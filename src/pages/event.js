@@ -1,10 +1,10 @@
 import React from 'react';
 
 import Layout from '../components/layout'
-export default function EventPage({ pageContext, ...props }) {
-  console.log(props, pageContext)
+export default function EventPage(props) {
+  console.log(props)
   return (
-    <Layout pageProps={props}>
+    <Layout pageProps={props.pageContext}>
       Test
       {/* <h2>{event.summary}</h2>
 
