@@ -1,6 +1,7 @@
 const path = '.env' + (process.env.NODE_ENV === 'development' ? '.dev' : '')
 
-if (process.env.NODE_EN !== 'production') {
+console.log(process.env.NODE_ENV)
+if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config({ path }) // only run this in prod if we're doing the FTP deployement, not for now/netlify deployment.
 }
 

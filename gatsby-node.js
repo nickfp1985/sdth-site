@@ -4,9 +4,12 @@ const path = require('path')
 const { GC_CLIENT_EMAIL, GC_PRIVATE_KEY, GC_ID } = process.env
 
 function authenticate() {
-  const jwtClient = new google.auth.JWT(GC_CLIENT_EMAIL, null, GC_PRIVATE_KEY, [
-    'https://www.googleapis.com/auth/calendar',
-  ])
+  const jwtClient = new google.auth.JWT(
+    GC_CLIENT_EMAIL,
+    null,
+    GC_PRIVATE_KEY,
+    ['https://www.googleapis.com/auth/calendar']
+  )
 
   return new Promise(res => {
     jwtClient.authorize(err => {
@@ -19,19 +22,22 @@ function authenticate() {
 }
 
 function getEvents(auth) {
-  return new Promise(async (res, reject) => {
+  return new Promise(async (resolve, reject) => {
     const calender = google.calendar('v3')
 
-    let resp
-    try {
-      resp = await calender.events.list({
+    calender.events
+      .list({
         auth,
         calendarId: GC_ID,
       })
-    } catch (err) {
-      reject(err)
-    }
-    res(resp.data)
+      .then(response => {
+        if (response.err) {
+          reject(response.err)
+        }
+
+        resolve(response.data)
+      })
+      .catch(err => console.log('the error', err))
   })
 }
 
@@ -40,9 +46,8 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => 
   const jwtClient = await authenticate()
   const data = await getEvents(jwtClient)
 
-
   data.items.forEach(event => {
-    console.log(event.attachments);
+    console.log(event.attachments)
     const nodeMeta = {
       id: createNodeId(`my-data-${event.id}`),
       parent: null,
