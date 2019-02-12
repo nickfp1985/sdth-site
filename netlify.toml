@@ -1,3 +1,4 @@
 
 
-environment = { NODE_VERSION = "11.5.0" }
+[context.branch-deploy]
+  environment = { NODE_VERSION = "11.5.0" }
