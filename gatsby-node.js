@@ -8,7 +8,7 @@ function authenticate() {
   const jwtClient = new google.auth.JWT(
     process.env.GC_CLIENT_EMAIL,
     null,
-    private.key,
+    privateKey,
     ['https://www.googleapis.com/auth/calendar']
   )
 
