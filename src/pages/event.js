@@ -6,7 +6,6 @@ export default function EventPage({ pageContext, ...props }) {
   console.log('pageContext', pageContext)
   return (
     <Layout pageProps={props}>
-      Test
       {Object.keys(pageContext).length > 0 ? (
         <>
           <h2>{pageContext.event.summary}</h2>

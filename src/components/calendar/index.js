@@ -48,7 +48,7 @@ function Calendar({ events }) {
         onSelectEvent={handleSelectEvent}
         style={{
           height: '700px',
-          maxWidth: '80%',
+          maxWidth: '100%',
           margin: 'auto',
           marginTop: '4.8rem',
           fontSize: '1.6rem',
