@@ -1,9 +1,9 @@
 const path = '.env' + (process.env.NODE_ENV === 'development' ? '.dev' : '.dev')
 
 console.log(process.env.NODE_ENV)
-// if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config({ path }) // only run this in prod if we're doing the FTP deployement, not for now/netlify deployment.
-// }
+}
 
 module.exports = {
   siteMetadata: {
@@ -59,8 +59,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-mailchimp',
       options: {
-        endpoint:
-          process.env.MAILCHIMP
+        endpoint: process.env.MAILCHIMP,
       },
     },
     `gatsby-plugin-remove-trailing-slashes`,
@@ -72,6 +71,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-remove-serviceworker`,
-    `gatsby-plugin-styled-components`
+    `gatsby-plugin-styled-components`,
   ],
 }
